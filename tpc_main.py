@@ -1,12 +1,5 @@
 import cozmo
 import requests
-from enum import Enum
-
-class Action(Enum):
-	LEFT = 1
-	RIGHT = 2
-	FORWARD = 3
-	REVERSE = 4
 
 def fetch_next_command():
 	...
@@ -26,13 +19,13 @@ def cozmo_backward(robot: cozmo.robot.Robot):
 
 def main(robot: cozmo.robot.Robot)
 	while(true):
-		if(command==LEFT):
+		if(command==1):
 			cozmo_left()
-		elif(command==RIGHT):
+		elif(command==2):
 			cozmo_right()
-		elif(command==FORWARD):
+		elif(command==3):
 			cozmo_forward()
-		elif(command==REVERSE):
+		elif(command==4):
 			cozmo_backward()
 		sleep(0.5)
 

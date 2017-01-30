@@ -1,8 +1,7 @@
+#!/usr/bin/env python3
+
 import cozmo
 import requests
-
-def fetch_next_command():
-	...
 
 def cozmo_left(robot: cozmo.robot.Robot):
 	robot.turn_in_place(degrees(30)).wait_for_completed()
@@ -18,6 +17,7 @@ def cozmo_backward(robot: cozmo.robot.Robot):
 
 
 def main(robot: cozmo.robot.Robot)
+	command=1
 	while(true):
 		if(command==1):
 			cozmo_left()
@@ -27,6 +27,7 @@ def main(robot: cozmo.robot.Robot)
 			cozmo_forward()
 		elif(command==4):
 			cozmo_backward()
+		command = command + 1
 		sleep(0.5)
 
 cozmo.run_program(main)

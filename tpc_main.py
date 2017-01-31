@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import cozmo
+from cozmo.util import degrees, distance_mm, speed_mmps
 import requests
+import time
 
 def fetch_next_command():
   print('fetching next command')
@@ -18,26 +20,26 @@ def cozmo_right(robot: cozmo.robot.Robot):
 
 def cozmo_forward(robot: cozmo.robot.Robot):
   print('moving forward')
-  robot.drive_straight(distance_mm(70), speed_mmps(50)).wait_for_complete()
+  robot.drive_straight(distance_mm(70), speed_mmps(50)).wait_for_completed()
 
 def cozmo_backward(robot: cozmo.robot.Robot):
   print('moving backward')
-  robot.drive_straight(distance_mm(-70), speed_mmps(50)).wait_for_complete()
+  robot.drive_straight(distance_mm(-70), speed_mmps(50)).wait_for_completed()
 
 
 def main(robot: cozmo.robot.Robot):
-  command = fetch_next_command();
-  while(true):
+  while(True):
+    command = fetch_next_command()
     if(command=='!cc-l'):
-      cozmo_left()
+      cozmo_left(robot)
     elif(command=='!cc-r'):
-      cozmo_right()
+      cozmo_right(robot)
     elif(command=='!cc-f'):
-      cozmo_forward()
+      cozmo_forward(robot)
     elif(command=='!cc-b'):
-      cozmo_backward()
+      cozmo_backward(robot)
     else:
       print('cannot match the command "{}" to a comzo capability'.format(command))
-    sleep(0.5)
+    time.sleep(3)
 
 cozmo.run_program(main)
